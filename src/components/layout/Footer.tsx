@@ -44,9 +44,9 @@ export const Footer = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-noise opacity-10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10">
           {/* Логотип и контакты */}
-          <div className="lg:col-span-2">
+          <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/">
               <div className="flex items-center text-xl font-bold text-white mb-5">
                 <div className="mr-2 rounded-full bg-gradient-to-r from-accent-500 to-glow-purple p-1.5 text-white shadow-accent">
@@ -56,7 +56,7 @@ export const Footer = () => {
                 <span className="ml-2 px-2 py-0.5 text-xs bg-accent-500 text-dark-900 rounded-full font-bold">FREE</span>
               </div>
             </Link>
-            <p className="mb-5 text-dark-100 max-w-md">
+            <p className="mb-4 sm:mb-5 text-dark-100 max-w-md text-sm sm:text-base">
               Бесплатный VPN сервис для безопасного и анонимного доступа к любым сайтам и сервисам.
               Без ограничений по времени, трафику и скорости.
             </p>
@@ -76,14 +76,14 @@ export const Footer = () => {
 
           {/* Ссылки */}
           {footerLinks.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-lg font-semibold mb-5 text-white">{section.title}</h3>
-              <ul className="space-y-3">
+            <div key={section.title} className="">
+              <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{section.title}</h3>
+              <ul className="space-y-1.5 sm:space-y-2">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link 
                       href={link.href}
-                      className="text-dark-100 hover:text-accent-400 transition-colors"
+                      className="text-dark-100 hover:text-accent-400 transition-colors text-sm sm:text-base"
                     >
                       {link.label}
                     </Link>
@@ -112,19 +112,19 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-dark-700/50 text-dark-200 text-sm">
-          <div className="flex flex-col md:flex-row justify-between">
-            <p>© {currentYear} {siteName}. Все права защищены.</p>
-            <div className="mt-4 md:mt-0">
+        <div className="mt-12 sm:mt-14 pt-6 sm:pt-8 border-t border-dark-700/50 text-dark-200 text-xs sm:text-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-center sm:text-left">© {currentYear} {siteName}. Все права защищены.</p>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
               <Link 
                 href="/legal/user-agreement" 
-                className="mr-5 hover:text-accent-400 transition-colors"
+                className="sm:mr-5 hover:text-accent-400 transition-colors text-center"
               >
                 Условия использования
               </Link>
               <Link 
                 href="/legal/terms" 
-                className="hover:text-accent-400 transition-colors"
+                className="hover:text-accent-400 transition-colors text-center"
               >
                 Политика конфиденциальности
               </Link>

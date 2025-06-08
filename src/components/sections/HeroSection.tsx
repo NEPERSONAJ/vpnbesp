@@ -126,8 +126,8 @@ export const HeroSection = () => {
       />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="w-full lg:w-1/2 lg:pr-12 mb-12 lg:mb-0">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
+          <div className="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -147,7 +147,7 @@ export const HeroSection = () => {
               <motion.h1 
                 custom={0} 
                 variants={textVariants}
-                className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6"
               >
                 <span className="text-white">Мощный </span>
                 <span className="text-gradient-to-r">бесплатный VPN</span>
@@ -157,7 +157,7 @@ export const HeroSection = () => {
               <motion.p 
                 custom={1} 
                 variants={textVariants}
-                className="text-lg text-dark-100 mb-8"
+                className="text-base sm:text-lg md:text-xl text-dark-100 mb-6 sm:mb-8 leading-relaxed"
               >
                 Доступ к любым сайтам и сервисам без ограничений скорости, трафика или времени использования — абсолютно бесплатно и безопасно.
               </motion.p>
@@ -187,7 +187,7 @@ export const HeroSection = () => {
               <motion.div 
                 custom={3} 
                 variants={textVariants}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
               >
                 <Button 
                   size="lg" 
@@ -212,16 +212,16 @@ export const HeroSection = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="mt-8 flex items-center"
+                className="mt-6 sm:mt-8 flex items-center flex-wrap"
               >
                 <div className="flex -space-x-2">
                   {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-accent-600 border-2 border-dark-800 flex items-center justify-center text-xs text-white font-bold">
+                    <div key={i} className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-accent-600 border-2 border-dark-800 flex items-center justify-center text-xs text-white font-bold">
                       {i}
                     </div>
                   ))}
                 </div>
-                <div className="ml-3 text-dark-200">
+                <div className="ml-2 sm:ml-3 text-dark-200 text-sm sm:text-base">
                   <span className="font-semibold text-accent-300">15,000+</span> пользователей уже с нами
                 </div>
               </motion.div>
@@ -280,10 +280,10 @@ export const HeroSection = () => {
                 {/* Основное содержимое - терминальный стиль */}
                 <div className="terminal-body">
                   {/* Командная строка с эффектом печати */}
-                  <div className="mb-4 px-3 py-2 bg-dark-900/70 rounded-md border border-accent-500/20 flex items-center text-sm">
-                    <span className="text-accent-400 mr-2">$</span>
-                    <div className="flex">
-                      <span className="text-dark-100 typing-animation">vpn --connect --server={getSelectedServerInfo()}</span>
+                  <div className="mb-3 sm:mb-4 px-2 sm:px-3 py-2 bg-dark-900/70 rounded-md border border-accent-500/20 flex items-center text-xs sm:text-sm">
+                    <span className="text-accent-400 mr-1 sm:mr-2">$</span>
+                    <div className="flex overflow-hidden">
+                      <span className="text-dark-100 typing-animation truncate">vpn --connect --server={getSelectedServerInfo()}</span>
                       <span className="cursor-animation"></span>
                     </div>
                   </div>
@@ -295,7 +295,7 @@ export const HeroSection = () => {
                       <span className="text-dark-200 text-xs">{vpnServers.length} серверов</span>
                     </div>
                     
-                    <div className="relative h-44 bg-dark-900/70 overflow-hidden">
+                    <div className="relative h-32 sm:h-40 md:h-44 bg-dark-900/70 overflow-hidden">
                       <div className="absolute inset-0 opacity-40 bg-[url('/images/world-map-dots.svg')] bg-no-repeat bg-center bg-contain"></div>
                       
                       {/* Анимированные точки передачи данных */}
@@ -314,9 +314,9 @@ export const HeroSection = () => {
                       </div>
                       
                       {/* Индикатор выбранного сервера */}
-                      <div className="absolute bottom-3 left-3 right-3 bg-dark-900/80 backdrop-blur-sm px-3 py-2 rounded-md border border-accent-500/20 flex items-center">
-                        <div className="w-2 h-2 rounded-full bg-accent-500 animate-pulse mr-2"></div>
-                        <span className="text-xs text-white font-mono">
+                      <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 bg-dark-900/80 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-md border border-accent-500/20 flex items-center">
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent-500 animate-pulse mr-1 sm:mr-2"></div>
+                        <span className="text-xs text-white font-mono truncate">
                           <span className="text-accent-400">Server:</span> {getSelectedServerInfo()}
                         </span>
                       </div>
@@ -330,7 +330,7 @@ export const HeroSection = () => {
                       <span>Бесплатные преимущества</span>
                     </div>
                     
-                    <div className="terminal-section-body grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
+                    <div className="terminal-section-body grid grid-cols-1 sm:grid-cols-2 gap-y-2 sm:gap-y-3 gap-x-2 sm:gap-x-4 text-xs sm:text-sm">
                       {/* Анимированное появление элементов */}
                       <motion.div 
                         className="flex items-center"

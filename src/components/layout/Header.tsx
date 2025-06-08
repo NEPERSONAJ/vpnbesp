@@ -47,28 +47,19 @@ export const Header = () => {
   };
 
   return (
-    <header 
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 will-change-transform ${
-        isScrolled ? 'backdrop-blur-md bg-dark-900/85 py-2 shadow-accent' : 'bg-transparent py-4'
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Логотип */}
-          <Link href="/">
-            <motion.div 
-              className="flex items-center text-xl font-bold"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="mr-2 rounded-full bg-gradient-to-r from-accent-500 to-glow-purple p-1.5 text-white shadow-accent">
-                <HiShieldCheck className="h-5 w-5" />
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-dark-900/95 backdrop-blur-md shadow-lg border-b border-dark-700/50' 
+          : 'bg-transparent'
+      }`}>
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* Логотип */}
+            <div className="flex items-center">
+              <div className="text-xl sm:text-2xl font-bold text-white">
+                <span className="text-gradient-primary">{siteName}</span>
               </div>
-              <span className="text-gradient-to-r from-accent-400 to-accent-200 font-bold">{siteName}</span>
-              <span className="ml-2 px-2 py-0.5 text-xs bg-accent-500 text-dark-900 rounded-full font-bold">FREE</span>
-            </motion.div>
-          </Link>
+            </div>
 
           {/* Десктоп навигация */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -119,42 +110,43 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Мобильное меню с оптимизированной анимацией */}
-        <AnimatePresence initial={false}>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="md:hidden mt-4 py-4 glass rounded-lg shadow-accent"
-              initial={{ opacity: 0, height: 0, y: -10 }}
-              animate={{ opacity: 1, height: 'auto', y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <nav className="flex flex-col space-y-4 px-4">
-                {navLinks.map((link) => (
-                  <Link 
-                    key={link.href}
-                    href={link.href}
-                    className="text-dark-100 hover:text-accent-400 transition-colors py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="pt-4 border-t border-dark-500">
-                  <Button 
-                    variant="glow" 
-                    fullWidth
-                    onClick={handleTelegramClick}
-                    className="animate-gradient-x"
-                  >
-                    Подключиться бесплатно
-                  </Button>
-                </div>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            {/* Мобильное меню */}
+            <AnimatePresence>
+              {isMobileMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="md:hidden absolute top-full left-0 right-0 mt-1 mx-3 sm:mx-4 py-4 glass rounded-lg shadow-accent"
+                >
+                  <nav className="flex flex-col space-y-3">
+                    {navLinks.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="text-dark-100 hover:text-accent-400 transition-colors duration-200 px-4 py-2 rounded-md hover:bg-dark-800/50 text-sm"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                    <Button 
+                      variant="glow" 
+                      size="sm" 
+                      className="mx-4 mt-2 text-sm"
+                      onClick={() => {
+                        window.open(telegramBot, '_blank');
+                        setIsMobileMenuOpen(false);
+                      }}
+                    >
+                      Подключиться бесплатно
+                    </Button>
+                  </nav>
+                </motion.div>
+              )}
+            </AnimatePresence>
       </div>
     </header>
   );
-}; 
+};
