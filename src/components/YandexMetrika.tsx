@@ -2,12 +2,13 @@
 
 import React, { useEffect } from 'react';
 import Script from 'next/script';
+import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { SEO_CONFIG } from '@/constants/seo';
 
 declare global {
   interface Window {
-    ym: (counterId: number, eventName: string, ...args: any[]) => void;
+    ym: (counterId: number, eventName: string, ...args: unknown[]) => void;
   }
 }
 
@@ -47,13 +48,15 @@ export const YandexMetrika = () => {
       </Script>
       <noscript>
         <div>
-          <img 
+          <Image 
             src={`https://mc.yandex.ru/watch/${metrikaId}`} 
             style={{ position: 'absolute', left: '-9999px' }} 
             alt="" 
+            width={1}
+            height={1}
           />
         </div>
       </noscript>
     </>
   );
-}; 
+};

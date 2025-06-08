@@ -67,10 +67,10 @@ const donationPlans = [
 ];
 
 interface PricingProps {
-  plans?: any[];
+  plans?: Record<string, unknown>[];
 }
 
-export const PricingSection: React.FC<PricingProps> = ({ plans }) => {
+export const PricingSection: React.FC<PricingProps> = () => {
   const telegramBot = SEO_CONFIG.telegram.bot;
   
   return (
@@ -227,4 +227,4 @@ export const PricingSection: React.FC<PricingProps> = ({ plans }) => {
       </div>
     </section>
   );
-}; 
+};

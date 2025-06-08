@@ -2,12 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { featureList } from '@/data/pricing';
 import { SEO_CONFIG } from '@/constants/seo';
 import { 
   HiShieldCheck, 
   HiLightningBolt, 
-  HiGlobe, 
   HiDeviceMobile, 
   HiCube, 
   HiSupport,
@@ -174,4 +172,4 @@ export const FeaturesSection = () => {
       </div>
     </section>
   );
-}; 
+};

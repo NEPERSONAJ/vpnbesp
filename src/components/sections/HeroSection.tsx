@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { SEO_CONFIG } from '@/constants/seo';
-import { FaShieldAlt, FaBolt, FaGlobeAmericas, FaLock, FaWifi, FaServer, FaUserShield, FaClock, FaBan } from 'react-icons/fa';
+import { FaShieldAlt, FaBolt, FaLock, FaUserShield, FaClock, FaBan } from 'react-icons/fa';
 import { ServerMap } from '@/components/ui/ServerMap';
 import { vpnServers, getActiveServer } from '@/data/servers';
 
@@ -390,4 +390,4 @@ export const HeroSection = () => {
       </div>
     </section>
   );
-}; 
+};

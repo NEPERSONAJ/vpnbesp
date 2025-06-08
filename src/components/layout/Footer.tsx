@@ -9,7 +9,6 @@ import { SEO_CONFIG } from '@/constants/seo';
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const telegramSupport = SEO_CONFIG.telegram.support;
-  const telegramChannel = SEO_CONFIG.telegram.channel;
   const telegramBot = SEO_CONFIG.telegram.bot;
   const siteName = SEO_CONFIG.openGraph.site_name;
 
@@ -135,4 +134,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-}; 
+};
