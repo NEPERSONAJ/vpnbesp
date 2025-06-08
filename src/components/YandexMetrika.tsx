@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import Script from 'next/script';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-export const YandexMetrika = () => {
+const YandexMetrikaInner = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const metrikaId = SEO_CONFIG.analytics.yandexMetrikaId;
@@ -48,15 +48,23 @@ export const YandexMetrika = () => {
       </Script>
       <noscript>
         <div>
-          <Image 
-            src={`https://mc.yandex.ru/watch/${metrikaId}`} 
-            style={{ position: 'absolute', left: '-9999px' }} 
-            alt="" 
+          <Image
+            src={`https://mc.yandex.ru/watch/${metrikaId}`}
+            style={{ position: 'absolute', left: '-9999px' }}
+            alt=""
             width={1}
             height={1}
           />
         </div>
       </noscript>
     </>
+  );
+};
+
+export const YandexMetrika = () => {
+  return (
+    <Suspense fallback={null}>
+      <YandexMetrikaInner />
+    </Suspense>
   );
 };
